@@ -1,0 +1,8 @@
+tile.YourModName:your_block1.name=Your Block1
+tile.YourModName:your_block2.name=Your Block2
+entity.YourModName:your_entity1.name=Your Entity1
+item.spawn_egg.entity.YourModName:your_entity1.name=Spawn Your Entity1
+entity.YourModName:your_entity2.name=Your Entity2
+item.spawn_egg.entity.YourModName:your_entity2.name=Spawn Your Entity2
+item.YourModName:your_item1.name=Your Item1
+item.YourModName:your_item2.name=Your Item2

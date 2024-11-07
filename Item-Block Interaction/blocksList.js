@@ -26,7 +26,7 @@ export const entryBlocks = new Map([
                 itemType: "Durability" // Optional: The type of consumption of your item, values accepted are "Stackable", "Durability" or ""
             },
             {
-                // In case the same block will have more than one interaction:
+                // In case you want the same block to have more than one interaction:
                 inputBlock: "minecraft:acacia_stairs",
                 inputBlockPermutations: [
                     { key: "weirdo_direction", value: 1 },
@@ -44,7 +44,7 @@ export const entryBlocks = new Map([
             }
         ]
     ],
-    // Add more blocks for more interactions
+    // Add more blocks for more interactions:
     [
         "minecraft:oak_slab",
         [
@@ -61,7 +61,7 @@ export const entryBlocks = new Map([
                 itemType: "Stackable"
             },
             {
-                inputBlock: "minecraft:oak_slab", // Required: The identifier of the block that will be interacted
+                inputBlock: "minecraft:oak_slab",
                 inputBlockPermutations: [
                     { key: "minecraft:vertical_half", value: "top" },
                 ],

@@ -1,0 +1,6 @@
+blocks\your_block1
+blocks\your_block2
+entities\your_entity1
+entities\your_entity2
+items\your_item1
+items\your_item2

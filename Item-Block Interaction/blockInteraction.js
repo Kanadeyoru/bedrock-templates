@@ -1,5 +1,11 @@
 import { world, EquipmentSlot, EntityEquippableComponent, system, ItemDurabilityComponent } from '@minecraft/server';
-import { entryBlocks, excludedPermutations } from './blocksList.js';
+import { entryBlocks, excludedPermutations } from './blocksList_ame.js';
+
+world.beforeEvents.worldInitialize.subscribe((blockComponentRegistry) => {
+    blockComponentRegistry.itemComponentRegistry.registerCustomComponent("ame:swing_animation", {
+        onUseOn() { }
+    });
+});
 
 const processedBlocks = {};
 const PROCESS_TIME_WINDOW = 20;
@@ -23,6 +29,7 @@ world.beforeEvents.itemUseOn.subscribe((eventData) => {
     const { x, y, z } = block.location;
     const blockKey = `${x}, ${y}, ${z}`;
     const lastProcessedTime = processedBlocks[blockKey];
+    const blockAbove = block.above();
 
     if (!mainhand || !item) return;
 
@@ -36,6 +43,7 @@ world.beforeEvents.itemUseOn.subscribe((eventData) => {
     if (matchingConfigs && face !== "Down") {
 
         matchingConfigs.forEach((matchingBlock) => {
+            if (blockAbove?.typeId != "minecraft:air" && matchingBlock.itemTag == "minecraft:is_shovel") return;
             const expectedStates = Object.fromEntries(matchingBlock.inputBlockPermutations.map(perm => [perm.key, perm.value]));
 
             if (!block.matches || !block.matches(matchingBlock.inputBlock, expectedStates)) {
@@ -80,7 +88,7 @@ world.beforeEvents.itemUseOn.subscribe((eventData) => {
 });
 
 function reduceItem(player, mainhand, item, itemType) {
-    if (item.amount <= 1) return undefined;
+    if (item.amount < 1) return undefined;
     if (itemType === "Durability") {
         mainhand.setItem(reduceDurability(player, item));
     } else if (itemType === "Stackable") {

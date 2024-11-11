@@ -2,7 +2,7 @@ import { world, EquipmentSlot, EntityEquippableComponent, system, ItemDurability
 import { entryBlocks, excludedPermutations } from './blocksList_ame.js';
 
 world.beforeEvents.worldInitialize.subscribe((blockComponentRegistry) => {
-    blockComponentRegistry.itemComponentRegistry.registerCustomComponent("ame:swing_animation", {
+    blockComponentRegistry.itemComponentRegistry.registerCustomComponent("ibi:swing_animation", {
         onUseOn() { }
     });
 });
